@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  .title-unit
+    h1 Welcome to Battle.net 1.5
+    p
+      |Your in-game id is your chat name. Connect with players. Find practice partners.
+    
+  .credit.pull-right
+    a(href='http://www.flickr.com/photos/vsmak/6409873671/in/photostream/', target='_blank') Photo by Vincent Samaco
+  .row
+    if streams
+      .span12
+        h2.title Live streams
+        ul.thumbnails
+          each k in streams
+            li.channel-thumbnail.span3
+              a.thumbnail(href='/'+'#{k.name}')
+                img(src='http://static-cdn.jtvnw.net/previews/live_user_#{k.name}-320x240.jpg', alt='')
+              p.title
+                a.title(href='/'+'#{k.name}') #{k.title}
+    else
+      .span6
+        p
+          |Oops! It looks like no one is streaming. Awkward..
+        p Refresh the page or check back later.

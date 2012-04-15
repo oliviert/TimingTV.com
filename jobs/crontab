@@ -1,0 +1,2 @@
+*/1 * * * * NODE_ENV=production /usr/bin/env /usr/local/bin/node ~/current/jobs/update_channels.js
+

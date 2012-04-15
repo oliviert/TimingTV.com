@@ -1,0 +1,69 @@
+extends layout
+
+block head
+  script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js')
+  script(src='/javascripts/json2.js')
+  script(src='/javascripts/validator-min.js')
+  script(src='/socket.io/socket.io.js')
+  script
+    var channel = '#{channel}';
+  script(src='/javascripts/channel.js')
+
+block navbar
+  li
+    a(href='/') Home
+
+block content
+  .row
+    .span8
+      .main-unit
+        .twitch-player
+          object#live_embed_player_flash(type='application/x-shockwave-flash', height='363', width='600', data='http://www.twitch.tv/widgets/live_embed_player.swf?channel=#{channel}', bgcolor='#000000')
+            param(name='allowFullScreen', value='true')
+            param(name='allowScriptAccess', value='always')
+            param(name='allowNetworking', value='all')
+            param(name='movie', value='http://www.twitch.tv/widgets/live_embed_player.swf')
+            param(name='flashvars', value='hostname=www.twitch.tv&channel=#{channel}&auto_play=true&start_volume=25')
+            param(name='wmode', value='opaque')
+    .span4
+      .main-unit
+        .chat-container
+          #chat-messages
+            ul.unstyled
+        #user-action
+          input#message-input(type='text', placeholder='Press enter to send')
+          .btn-group.right
+            a.btn.btn-info.dropdown-toggle(data-toggle='dropdown', href='') 
+              |Users
+              span.caret-alt
+            ul.dropdown-menu.right.bottom-up
+
+        #myModal.modal.hide.fade
+            .modal-header
+              a.close(data-dismiss='modal') ×
+              h3 Identify yourself
+            .modal-body
+              h4 StarCraft 2 
+              form.form-inline
+                .control-group(style='float: left;')
+                  select#select-league.span(style='width: 110px; margin-right: 5px')
+                    option(value='2') Master
+                    option(value='3') Diamond
+                    option(value='4') Platinum
+                    option(value='5') Gold
+                    option(value='6') Silver
+                    option(value='7', selected='selected') Bronze
+                .control-group(style='float: left;')
+                  input#character-name.span2(type='text', placeholder='Character name')
+                .control-group(style='flot: left;')
+                  input#character-code.span1(type='text', maxlength='3', placeholder='123', style='margin-left: 5px')
+
+            .modal-footer
+              button#save.btn.btn-primary(type='submit') Save changes
+              a.btn(href='#', data-dismiss='modal') Close
+
+block append footer
+
+block append loadlast
+  script(src='/javascripts/bootstrap-transition.js')
+  script(src='/javascripts/bootstrap-modal.js')

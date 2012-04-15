@@ -1,0 +1,74 @@
+!!! 5
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    title TimingTV
+    meta(property='og:site_name', content='TimingTV')
+    meta(property='og:title', content='TimingTV')
+    meta(property='og:url', content='http://www.timingtv.com')
+    meta(property='og:type', content='website')
+    meta(property='og:description', content='StarCraft 2 chat for TwitchTV.')
+    
+    link(href='../stylesheets/bootstrap.css', rel='stylesheet')
+    style(type='text/css')
+      body {
+      padding-top: 60px;
+      padding-bottom: 40px;
+      }
+    link(href='../stylesheets/bootstrap-responsive.min.css', rel='stylesheet')
+    
+    link(rel='shortcut icon', href='images/favicon.ico')
+    link(rel='apple-touch-icon', href='images/apple-touch-icon.png')
+    link(rel='apple-touch-icon', sizes='72x72', href='images/apple-touch-icon-72x72.png')
+    link(rel='apple-touch-icon', sizes='114x114', href='images/apple-touch-icon-114x114.png')
+    
+    block head
+    script(type='text/javascript')
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-29478305-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+  body
+    #fb-root
+      script
+        (function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          a.btn.btn-navbar(data-toggle='collapse', data-target='.nav-collapse')
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.brand(href='/') TimingTV
+          .nav-collapse
+            ul.nav
+              block navbar
+                li.active
+                  a(href='/') Home
+            .share.pull-right(style='padding: 10px 10px 5px')
+              <div class="fb-like" data-href="http://www.timingtv.com" data-send="false" data-layout="button_count" data-width="50" data-show-faces="false" style="height: 21px; vertical-align: top;"></div>
+              a.twitter-share-button(href='https://twitter.com/share', data-url='http://www.timingtv.com', data-text='Check out TimingTV, a different chat for StarCraft streams.') Tweet
+                script
+                    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");            
+            block personalize
+
+    .container
+      block content
+      .footer
+        block footer
+          p 
+            |Created by
+            a(href='http://twitter.com/olivierht')@olivierht
+    block loadlast
+      script(src='/javascripts/bootstrap.min.js')
